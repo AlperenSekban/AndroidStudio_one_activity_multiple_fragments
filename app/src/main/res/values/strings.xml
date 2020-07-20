@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">OneActivityMultipleFragments</string>
+    <string name="common_man">Erkek</string>
+    <string name="common_woman">Kadın</string>
+    <string name="common_notWorking">Çalışmıyor</string>
+    <string name="common_working">Çalışıyor</string>
+    <string name="activity_edit_screen_personInformation">Kişi Bilgileri</string>
+    <string name="activity_edit_screen_fullName">İsim Soyisim:</string>
+    <string name="activity_edit_screen_gender">Cinsiyet:</string>
+    <string name="activity_edit_screen_workingStatus">Çalışma Durumu:</string>
+    <string name="activity_edit_screen_removePerson_button">Kişiyi Sil</string>
+    <string name="activity_splash_screen_welcome">HOŞGELDİNİZ</string>
+    <string name="activity_add_screen_warningMessage">Lütfen bütün alanları doldurunuz</string>
+    <string name="activity_add_screen_hint_person_editText">İsim Giriniz...</string>
+    <string name="activity_add_screen_button_save">KAYDET</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

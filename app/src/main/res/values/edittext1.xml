@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="MyEditText">
+        <item name="colorControlNormal">@color/colororange</item>
+        <item name="colorControlActivated">@color/colororange</item>
+        <item name="colorControlHighlight">@color/colororange</item>
+    </style>
+
+</resources>
