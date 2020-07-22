@@ -3,7 +3,6 @@ package com.example.one_avtivity_multiple_fragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,21 +14,20 @@ import android.view.ViewGroup;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class PersonList extends Fragment {
+public class PersonListFragment extends Fragment implements AdapterOnClick {
     View view;
-    Adapter adp;
+    PersonalAdapter adp;
     FloatingActionButton fabBtn;
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
+    SendDataFragment sendDataFragment;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        view= inflater.inflate(R.layout.fragment_person_list, container, false);
+        view = inflater.inflate(R.layout.fragment_person_list, container, false);
+
         defination();
 
         createList();
@@ -37,7 +35,7 @@ public class PersonList extends Fragment {
             @Override
             public void onClick(View view) {
                 getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.activity_main_frameLayout,new AddFragment(),"addFragment")
+                        .replace(R.id.activity_main_frameLayout, new AddFragment(), "addFragment")
                         .setTransitionStyle(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                         .addToBackStack("personListFragment")
                         .commit();
@@ -56,12 +54,24 @@ public class PersonList extends Fragment {
     }
 
     public void createList() {
-        adp = new Adapter(this.getContext(),
-                ((MainActivity)getActivity()).kisiModels);
+        adp = new PersonalAdapter(getContext(), ((MainActivity) getActivity()).kisiModels, this);
         recyclerView.setAdapter(adp);
     }
 
 
+    @Override
+    public void onClick(int position) {
+        DeleteFragment deleteFragment = new DeleteFragment();
+        Bundle bundle = new Bundle();
+        bundle.putInt(Utility.position, position);
+        deleteFragment.setArguments(bundle);
 
 
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.activity_main_frameLayout, deleteFragment, "deletefragment")
+                .setTransitionStyle(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                .addToBackStack("personListFragment")
+                .commit();
+
+    }
 }

@@ -1,39 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PersonList">
+    tools:context=".PersonListFragment">
 
-    <RelativeLayout
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/activity_main_person_recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
+        android:layout_height="match_parent" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/activity_main_person_recyclerView">
-
-
-        </androidx.recyclerview.widget.RecyclerView>
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/activity_main_add_floatActionButton"
-            android:layout_width="500dp"
-            android:layout_height="500dp"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:foregroundGravity="right|bottom"
-            android:layout_marginRight="30dp"
-            android:layout_marginBottom="30dp"
-            android:src="@android:drawable/ic_input_add"
-            android:clickable="true">
-
-        </com.google.android.material.floatingactionbutton.FloatingActionButton>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/activity_main_add_floatActionButton"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="30dp"
+        android:clickable="true"
+        android:foregroundGravity="right|bottom"
+        android:src="@android:drawable/ic_input_add" />
 
 
+</RelativeLayout>
 
-    </RelativeLayout>
 
-</FrameLayout>

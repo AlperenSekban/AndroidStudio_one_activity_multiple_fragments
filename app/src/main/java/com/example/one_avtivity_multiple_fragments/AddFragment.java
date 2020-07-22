@@ -1,7 +1,6 @@
 package com.example.one_avtivity_multiple_fragments;
 
-import android.app.Activity;
-import android.content.Intent;
+import android.Manifest;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -19,50 +18,59 @@ import android.widget.Toast;
 public class AddFragment extends Fragment {
     View view;
     EditText person;
-    RadioButton man, woman, calisiyor, calismiyor;
+    RadioButton man, woman, working, notWorking;
     Button addBtn;
     RadioGroup rGGender, rGworkingStatus;
+    String fullName;
+    Integer gender;
+    Integer workingStatus;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        view= inflater.inflate(R.layout.fragment_add, container, false);
+        view = inflater.inflate(R.layout.fragment_add, container, false);
         defination();
+        addButtonClick();
+        return view;
+    }
+
+    private void addButtonClick() {
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (person.getText().toString().isEmpty() || !(isSelected(rGGender)) || !(isSelected(rGworkingStatus))) {
-                    Toast.makeText(getActivity(), R.string.activity_add_screen_warningMessage, Toast.LENGTH_SHORT).show();
 
+                if (person.getText().toString().isEmpty()) {
+                    Toast.makeText(getActivity(), R.string.activity_add_screen_warningMessage_fullName, Toast.LENGTH_SHORT).show();
+                } else if (!(isSelected(rGGender))) {
+                    Toast.makeText(getActivity(), R.string.activity_add_screen_warningMessage_gender, Toast.LENGTH_SHORT).show();
+                } else if (!(isSelected(rGworkingStatus))) {
+                    Toast.makeText(getActivity(), R.string.activity_add_screen_warningMessage_workingStatus, Toast.LENGTH_SHORT).show();
                 } else {
-                    Person.fullName=person.getText().toString();
+                    fullName = person.getText().toString();
                     if (man.isChecked()) {
-                        Person.gender=R.drawable.man;
+                        gender = R.drawable.man;
                     } else if (woman.isChecked()) {
-                        Person.gender=R.drawable.woman;
+                        gender = R.drawable.woman;
                     }
-                    if (calisiyor.isChecked()) {
-                        Person.workingStatus=R.drawable.ic_action_calisiyor;
-                    } else if (calismiyor.isChecked()) {
-                        Person.workingStatus=R.drawable.ic_action_calismiyor;
+                    if (working.isChecked()) {
+                        workingStatus = R.drawable.ic_action_working;
+                    } else if (notWorking.isChecked()) {
+                        workingStatus = R.drawable.ic_action_notworking;
                     }
-                    ((MainActivity)getActivity()).kisiModels.add(new KisiModel(Person.fullName,Person.gender,Person.workingStatus));
-                    ((MainActivity)getActivity()).getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.activity_main_frameLayout,new PersonList(),"personListFragment")
-                            .setTransitionStyle(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                            .commit();
+                    ((MainActivity) getActivity()).kisiModels.add(new KisiModel(fullName, gender, workingStatus));
+                    ((MainActivity) getActivity()).backFirstFragment(getActivity());
                 }
 
             }
         });
-        return view;
     }
+
     public void defination() {
         person = view.findViewById(R.id.person);
         man = view.findViewById(R.id.man);
         woman = view.findViewById(R.id.woman);
-        calisiyor = view.findViewById(R.id.calisiyor);
-        calismiyor = view.findViewById(R.id.calismiyor);
+        working = view.findViewById(R.id.calisiyor);
+        notWorking = view.findViewById(R.id.calismiyor);
         addBtn = view.findViewById(R.id.addBtn);
         rGGender = view.findViewById(R.id.rGGender);
         rGworkingStatus = view.findViewById(R.id.rGworkingStatus);

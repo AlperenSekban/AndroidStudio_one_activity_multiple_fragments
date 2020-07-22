@@ -10,7 +10,9 @@
     <string name="activity_edit_screen_workingStatus">Çalışma Durumu:</string>
     <string name="activity_edit_screen_removePerson_button">Kişiyi Sil</string>
     <string name="activity_splash_screen_welcome">HOŞGELDİNİZ</string>
-    <string name="activity_add_screen_warningMessage">Lütfen bütün alanları doldurunuz</string>
+    <string name="activity_add_screen_warningMessage_fullName">Lütfen İsim Giriniz</string>
+    <string name="activity_add_screen_warningMessage_gender">Lütfen Cinsiyet Seçiniz</string>
+    <string name="activity_add_screen_warningMessage_workingStatus">Lütfen Çalışma Durumunu Seçiniz</string>
     <string name="activity_add_screen_hint_person_editText">İsim Giriniz...</string>
     <string name="activity_add_screen_button_save">KAYDET</string>
     <!-- TODO: Remove or change this placeholder text -->

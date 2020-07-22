@@ -36,7 +36,10 @@
             android:layout_height="wrap_content"
             android:id="@+id/person"
             android:layout_marginRight="20dp"
-            android:hint="@string/activity_add_screen_hint_person_editText">
+            android:hint="@string/activity_add_screen_hint_person_editText"
+            android:maxLines="1"
+            android:imeOptions="actionDone"
+            android:inputType="text">
 
         </EditText>
 
