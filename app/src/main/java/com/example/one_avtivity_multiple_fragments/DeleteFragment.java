@@ -27,8 +27,6 @@ public class DeleteFragment extends Fragment implements SendDataFragment {
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_delete, container, false);
 
-
-
         defination();
         seting();
 
@@ -37,10 +35,6 @@ public class DeleteFragment extends Fragment implements SendDataFragment {
             public void onClick(View view) {
                 ((MainActivity) getActivity()).kisiModels.remove(position);
                 ((MainActivity)getActivity()).backFirstFragment(getActivity());
-                /*getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.activity_main_frameLayout, new PersonListFragment(), "personListFragment")
-                        .setTransitionStyle(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                        .commit();*/
             }
         });
 

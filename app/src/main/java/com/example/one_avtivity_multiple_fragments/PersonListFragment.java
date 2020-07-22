@@ -20,7 +20,6 @@ public class PersonListFragment extends Fragment implements AdapterOnClick {
     FloatingActionButton fabBtn;
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
-    SendDataFragment sendDataFragment;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -29,21 +28,21 @@ public class PersonListFragment extends Fragment implements AdapterOnClick {
         view = inflater.inflate(R.layout.fragment_person_list, container, false);
 
         defination();
-
         createList();
-        fabBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.activity_main_frameLayout, new AddFragment(), "addFragment")
-                        .setTransitionStyle(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                        .addToBackStack("personListFragment")
-                        .commit();
-            }
-        });
+        addButtonClick();
 
 
         return view;
+    }
+
+    private void addButtonClick() {
+        fabBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AddFragment addFragment=new AddFragment();
+                ((MainActivity)getActivity()).changeFragment(getContext(),addFragment,"addFragment");
+            }
+        });
     }
 
     public void defination() {
@@ -66,12 +65,7 @@ public class PersonListFragment extends Fragment implements AdapterOnClick {
         bundle.putInt(Utility.position, position);
         deleteFragment.setArguments(bundle);
 
-
-        getActivity().getSupportFragmentManager().beginTransaction()
-                .replace(R.id.activity_main_frameLayout, deleteFragment, "deletefragment")
-                .setTransitionStyle(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                .addToBackStack("personListFragment")
-                .commit();
+        ((MainActivity)getActivity()).changeFragment(getContext(),deleteFragment,"deletefragment");
 
     }
 }
